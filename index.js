@@ -5,9 +5,8 @@ const login = require("fb-chat-api");
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// सीधा HTML डिजाइन यहाँ से चलेगा
 app.get('/', (req, res) => {
-    res.set('Cache-Control', 'no-store'); // पुराने डेटा को साफ़ करने के लिए
+    res.set('Cache-Control', 'no-store');
     res.send(`
 <!DOCTYPE html>
 <html lang="en">
@@ -45,16 +44,5 @@ app.post('/start', (req, res) => {
     try {
         appState = JSON.parse(cookie);
     } catch (e) {
-        return res.send("Invalid Cookie Format. Use JSON.");
-    }
-    login({appState: appState}, (err, api) => {
-        if(err) return res.send("Login Error: " + err);
-        api.sendMessage(`${haterName} ${message}`, threadId);
-    });
-    res.send("<h1>System Started! Check Messenger.</h1>");
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server live on port ${PORT}`);
-});
+        return res.send("Invalid
+                        
